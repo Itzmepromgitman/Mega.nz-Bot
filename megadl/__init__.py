@@ -21,16 +21,22 @@ if os.path.isfile('.env'):
     load_dotenv()
 else:
     logging.warning("WARNING: No .env file found. Attempting to download from URL.")
-    try:
-        response = requests.get(env_file_url)
-        response.raise_for_status()  # Check if the request was successful
-        with open(env_file_path, 'w') as env_file:
-            env_file.write(response.text)
-        load_dotenv()  # Load the newly downloaded .env file
-        logging.info(".env file downloaded and loaded successfully.")
-    except requests.exceptions.RequestException as e:
-        logging.error(f"Failed to download .env file: {e}")
-
+    os.environ['APP_ID'] = '25769635'
+    os.environ['API_HASH'] = '863eec9ad6c6d54ceef169cb244d9349'
+    os.environ['BOT_TOKEN'] = '7744440054:AAGPb8szzj-35KJbcsH8mcnsMljb9gZrXQM'
+    
+    os.environ['MEGA_EMAIL'] = 'yourname@gmail.com'
+    os.environ['MEGA_PASSWORD'] = 'mypassword'
+    
+    os.environ['AUTH_USERS'] = '7037784425'
+    os.environ['USE_ENV'] = 'False'
+    os.environ['LOG_CHAT'] = '0'
+    os.environ['MONGO_URI'] = 'mongodb+srv://username:password@host/dbname?retryWrites=true&w=majority'
+    os.environ['CYPHER_KEY'] = 'vJmDXO4xria6SYVcOfVYd3k3YM8WiiGBfRjbQ8MBsvI='
+    
+    os.environ['DOWNLOAD_LOCATION'] = '${PWD}/NexaBots'
+    os.environ['CHUNK_SIZE'] = '524288'
+    os.environ['TG_MAX_SIZE'] = '2040108421'
 
 # client
 from .helpers.cypher import MeganzClient
