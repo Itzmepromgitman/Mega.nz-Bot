@@ -9,4 +9,4 @@ COPY . .
 RUN python3 -m venv venv
 RUN venv/bin/pip install -U -r requirements.txt
 
-CMD ["venv/bin/python3", "-m", "megadl"]
+CMD ["sh", "-c", "venv/bin/gunicorn app:app & venv/bin/python3 -m megadl"]
